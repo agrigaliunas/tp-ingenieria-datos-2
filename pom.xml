@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>ar.edu.uade</groupId>
 	<artifactId>tp-bd2</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>tp-bd2</name>
 	<description>Trabajo practico para ingenieria de datos 2</description>
 	<properties>
@@ -21,7 +21,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+    	<dependency>
+      		<groupId>org.springframework.boot</groupId>
+      		<artifactId>spring-boot-starter-data-mongodb</artifactId>
+    	</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
