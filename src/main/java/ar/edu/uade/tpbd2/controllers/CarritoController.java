@@ -1,18 +1,13 @@
 package ar.edu.uade.tpbd2.controllers;
 
-import static com.mongodb.client.model.Filters.eq;
-
-import ar.edu.uade.tpbd2.dao.MongoDB;
-import ar.edu.uade.tpbd2.services.CarritoService;
-import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
+import ar.edu.uade.tpbd2.services.CarritoService;
 
 @RestController
 @RequestMapping("carrito")
@@ -23,8 +18,8 @@ public class CarritoController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<String> obtener(@PathVariable("id") String nickname) {
-        return carritoService.obtenerCarrito(nickname);
+    public ResponseEntity<String> obtener(@PathVariable("id") final String nickname) {
+        return this.carritoService.obtenerCarrito(nickname);
     }
 
 
