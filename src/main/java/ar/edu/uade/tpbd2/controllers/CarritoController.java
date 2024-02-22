@@ -4,9 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import ar.edu.uade.tpbd2.persistence.model.Carrito;
 import ar.edu.uade.tpbd2.services.CarritoService;
 
 @RestController
@@ -17,10 +20,30 @@ public class CarritoController {
     public CarritoService carritoService;
 
 
-    @GetMapping("/{id}")
-    public ResponseEntity<String> obtener(@PathVariable("id") final String nickname) {
-        return this.carritoService.obtenerCarrito(nickname);
+    @GetMapping("/{nickname}")
+    public ResponseEntity<Carrito> obtenerPorNickname(@PathVariable("nickname") final String nickname) {
+        return this.carritoService.obtenerCarritoPorNickname(nickname);
     }
+
+    @PostMapping("")
+    public Carrito crearCarritoEntero(@RequestBody final Carrito request) {
+        return this.carritoService.crearCarrito(request);
+    }
+
+    // TODO:
+    /*
+     * POST
+     * Agregar producto
+     *
+     * PUT
+     * Actualizar cantidad producto
+     *
+     * DELETE
+     * Eliminar producto
+     *
+     * DELETE
+     * Vaciar carrito
+     */
 
 
 }

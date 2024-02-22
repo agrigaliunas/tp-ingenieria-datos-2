@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class TpBd2Application {
 
 	public static void main(final String[] args) {
-		SpringApplication.run(TpBd2Application.class, args);
+	    SpringApplication.run(TpBd2Application.class, args);
 	}
 
 }

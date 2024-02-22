@@ -2,6 +2,7 @@ package ar.edu.uade.tpbd2.persistence.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "carrito")
 public class Carrito {
@@ -9,25 +10,27 @@ public class Carrito {
     @Id
     private String id;
 
-    private String usuarioId;
+    private String nickname;
 
+    @Field(value = "estado_actual")
     private EstadoActual estadoActual;
 
+    @Field(value = "estado_anterior")
     private EstadoAnterior estadoAnterior;
 
     public String getId() {
         return this.id;
     }
 
-    public String getUsuarioId() {
-        return this.usuarioId;
+    public String getNickname() {
+        return this.nickname;
     }
 
-    public void setUsuarioId(final String usuarioId) {
-        this.usuarioId = usuarioId;
+    public void setNickname(final String nickname) {
+        this.nickname = nickname;
     }
 
-    public Estado getEstadoActual() {
+    public EstadoActual getEstadoActual() {
         return this.estadoActual;
     }
 
@@ -35,7 +38,7 @@ public class Carrito {
         this.estadoActual = estadoActual;
     }
 
-    public Estado getEstadoAnterior() {
+    public EstadoAnterior getEstadoAnterior() {
         return this.estadoAnterior;
     }
 

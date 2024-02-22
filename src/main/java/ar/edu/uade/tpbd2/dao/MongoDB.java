@@ -14,7 +14,7 @@ import com.mongodb.client.MongoCollection;
 public class MongoDB {
 
     @Autowired
-    private MongoClient mongoClient;
+    public MongoClient mongoClient;
 
     public MongoCollection<Document> getCollection(final String collection) {
         return this.mongoClient.getDatabase("BD2").getCollection(collection);
