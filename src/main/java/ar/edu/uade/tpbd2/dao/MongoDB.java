@@ -24,20 +24,14 @@ public class MongoDB {
         }
     }
 
-    public static synchronized MongoDB getInstance(MongoDatabase database) {
+    public static synchronized MongoDB getInstance() {
         if (instance == null) {
             instance = new MongoDB();
         }
         return instance;
     }
 
-    public ResponseEntity<String> obtenerCarrito(int UsuarioID) {
-        Document doc = this.carritoCollection.find(eq("usuario_id", UsuarioID)).first();
-        if (doc != null) {
-            return ResponseEntity.status(HttpStatus.OK).body(doc.toJson());
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró carrito");
-        }
+    public MongoCollection<Document> getCarritoCollection() {
+        return carritoCollection;
     }
-
 }
