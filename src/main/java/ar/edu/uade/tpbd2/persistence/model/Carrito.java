@@ -1,8 +1,9 @@
 package ar.edu.uade.tpbd2.persistence.model;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "carrito")
 public class Carrito {
@@ -12,11 +13,29 @@ public class Carrito {
 
     private String nickname;
 
-    @Field(value = "estado_actual")
-    private EstadoActual estadoActual;
+    private List<Producto> productosActual;
 
-    @Field(value = "estado_anterior")
-    private EstadoAnterior estadoAnterior;
+    private List<Producto> productosAnterior;
+
+    public List<Producto> getProductosActual() {
+        return this.productosActual;
+    }
+
+    public void setProductosActual(final List<Producto> productosActual) {
+        this.productosActual = productosActual;
+    }
+
+    public List<Producto> getProductosAnterior() {
+        return this.productosAnterior;
+    }
+
+    public void setProductosAnterior(final List<Producto> productosAnterior) {
+        this.productosAnterior = productosAnterior;
+    }
+
+    public void setId(final String id) {
+        this.id = id;
+    }
 
     public String getId() {
         return this.id;
@@ -30,19 +49,4 @@ public class Carrito {
         this.nickname = nickname;
     }
 
-    public EstadoActual getEstadoActual() {
-        return this.estadoActual;
-    }
-
-    public void setEstadoActual(final EstadoActual estadoActual) {
-        this.estadoActual = estadoActual;
-    }
-
-    public EstadoAnterior getEstadoAnterior() {
-        return this.estadoAnterior;
-    }
-
-    public void setEstadoAnterior(final EstadoAnterior estadoAnterior) {
-        this.estadoAnterior = estadoAnterior;
-    }
 }
