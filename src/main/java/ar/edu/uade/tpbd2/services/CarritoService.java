@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import ar.edu.uade.tpbd2.persistence.model.Carrito;
+import ar.edu.uade.tpbd2.persistence.model.Producto;
 import ar.edu.uade.tpbd2.repositories.CarritoRepository;
 
 @Service
@@ -29,5 +30,19 @@ public class CarritoService {
 
     public Carrito crearCarrito(final Carrito request) {
         return this.carritoRepository.insert(request);
+    }
+
+    public ResponseEntity<Carrito> agregarProducto(final String carritoId, final Producto producto) throws Exception {
+        Carrito carrito = this.carritoRepository.findById(carritoId).orElse(null);
+
+        if (carrito != null) {
+            carrito.addNewProduct(producto);
+
+            this.carritoRepository.save(carrito);
+        }else {
+            throw new Exception("No se encontro el carrito de este id: " + carritoId);
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(carrito);
     }
 }
