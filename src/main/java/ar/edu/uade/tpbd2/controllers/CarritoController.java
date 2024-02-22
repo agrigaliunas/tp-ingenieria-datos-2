@@ -25,7 +25,7 @@ public class CarritoController {
         return this.carritoService.obtenerCarritoPorNickname(nickname);
     }
 
-    @PostMapping("")
+    @PostMapping("/crearCarrito")
     public Carrito crearCarritoEntero(@RequestBody final Carrito request) {
         return this.carritoService.crearCarrito(request);
     }
