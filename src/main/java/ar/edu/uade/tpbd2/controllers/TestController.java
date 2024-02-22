@@ -24,7 +24,7 @@ public class TestController {
         try (MongoClient mongoClient = MongoClients.create(uri)) {
             MongoDatabase database = mongoClient.getDatabase("BD2");
             MongoCollection<Document> collection = database.getCollection("carrito");
-            Document doc = collection.find(eq("carrito-id", 12345)).first();
+            Document doc = collection.find(eq("usuario_id", 123)).first();
             if (doc != null) {
                 return ResponseEntity.ok(doc.toJson());
             } else {
