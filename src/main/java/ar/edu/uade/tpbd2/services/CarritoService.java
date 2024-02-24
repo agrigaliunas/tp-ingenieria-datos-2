@@ -46,4 +46,17 @@ public class CarritoService {
 
         return ResponseEntity.status(HttpStatus.OK).body(carrito);
     }
+    
+    public ResponseEntity<Carrito> eliminarProducto(final String carritoId, final String productoId) throws Exception {
+    	Carrito carrito = carritoRepository.findByIdAndProductosActual_ProductoId(carritoId, productoId);         
+    	if (carrito != null) {             
+    		carrito.getProductosActual().removeIf(producto -> producto.getProductoId().to.equals(productoId));
+
+            this.carritoRepository.save(carrito);
+        }else {
+            throw new Exception("No se encontro el carrito de este id: " + carritoId);
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(carrito);
+    }
 }
