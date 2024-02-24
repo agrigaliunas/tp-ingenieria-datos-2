@@ -102,4 +102,19 @@ public class CatalogoDeProducto {
     public void setUltimaActualizacion(final LocalDateTime ultimaActualizacion) {
         this.ultimaActualizacion = ultimaActualizacion;
     }
+
+    @Override
+    public String toString() {
+        return "CatalogoDeProducto{" +
+                "productoID=" + productoID +
+                ", nombre='" + nombre + '\'' +
+                ", marca='" + marca + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", precio=" + precio +
+                ", stockActual=" + stockActual +
+                ", categoria='" + categoria + '\'' +
+                ", ultimaActualizacion=" + ultimaActualizacion +
+                ", actividades=" + actividades +
+                '}';
+    }
 }

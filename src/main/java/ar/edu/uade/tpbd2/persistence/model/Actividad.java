@@ -3,7 +3,6 @@ package ar.edu.uade.tpbd2.persistence.model;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public class Actividad {
 
@@ -47,11 +46,11 @@ public class Actividad {
         this.valorActual = valorActual;
     }
 
-    public LocalDateTime  getFechaDeActividad() {
+    public LocalDateTime getFechaDeActividad() {
         return this.fechaDeActividad;
     }
 
-    public void setFechaDeActividad(final LocalDateTime  fechaDeActividad) {
+    public void setFechaDeActividad(final LocalDateTime fechaDeActividad) {
         this.fechaDeActividad = fechaDeActividad;
     }
 
@@ -63,4 +62,14 @@ public class Actividad {
         this.comentario = comentario;
     }
 
+    @Override
+    public String toString() {
+        return "Actividad{" +
+                "campoActualizado='" + campoActualizado + '\'' +
+                ", valorAnterior='" + valorAnterior + '\'' +
+                ", valorActual='" + valorActual + '\'' +
+                ", fechaDeActividad=" + fechaDeActividad +
+                ", comentario='" + comentario + '\'' +
+                '}';
+    }
 }

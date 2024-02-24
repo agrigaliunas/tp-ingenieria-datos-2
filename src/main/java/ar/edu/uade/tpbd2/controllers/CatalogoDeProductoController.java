@@ -21,6 +21,7 @@ public class CatalogoDeProductoController {
 
     @PostMapping("")
     public CatalogoDeProducto crearProducto(@RequestBody final CatalogoDeProducto request) {
+        System.out.println(request);
         return this.catalogoDeProductosService.crearProducto(request);
     }
 }
