@@ -1,25 +1,17 @@
 package ar.edu.uade.tpbd2.persistence.model;
 
-import org.springframework.data.mongodb.core.mapping.Field;
-
 import java.time.LocalDateTime;
 
 public class Actividad {
 
-
-    @Field("campo_actualizado")
     private String campoActualizado;
 
-    @Field("valor_anterior")
     private String valorAnterior;
 
-    @Field("valor_actual")
     private String valorActual;
 
-    @Field("fecha_de_actividad")
     private LocalDateTime fechaDeActividad;
 
-    @Field("comentario")
     private String comentario;
 
     public String getCampoActualizado() {

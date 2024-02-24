@@ -1,6 +1,5 @@
 package ar.edu.uade.tpbd2.controllers;
 
-import ar.edu.uade.tpbd2.persistence.model.Carrito;
 import ar.edu.uade.tpbd2.persistence.model.CatalogoDeProducto;
 import ar.edu.uade.tpbd2.services.CatalogoDeProductosService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +13,9 @@ public class CatalogoDeProductoController {
     @Autowired
     public CatalogoDeProductosService catalogoDeProductosService;
 
-    @GetMapping("/{producto_id}")
-    public ResponseEntity<CatalogoDeProducto> obtenerPorNickname(@PathVariable("producto_id") final String productoID) {
+    @GetMapping("/{productoID}")
+    public ResponseEntity<CatalogoDeProducto> obtenerPorNickname(@PathVariable("productoID") final String productoID) {
+        System.out.println(productoID);
         return this.catalogoDeProductosService.obtenerProductoPorID(productoID);
     }
 

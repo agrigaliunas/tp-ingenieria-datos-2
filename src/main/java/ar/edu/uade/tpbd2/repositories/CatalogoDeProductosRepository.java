@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface CatalogoDeProductosRepository extends MongoRepository<CatalogoDeProducto, String> {
 
     // ?0 corresponde al primer parametro de findByNickname
-    @Query("{ 'producto_id' : ?0 }")
+    @Query("{ 'productoID' : ?0 }")
     Optional<CatalogoDeProducto> findByProductoID(final String productoID);
 
 }

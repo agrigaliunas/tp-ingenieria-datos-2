@@ -15,7 +15,6 @@ public class CatalogoDeProductosService {
     private CatalogoDeProductosRepository catalogoDeProductosRepository;
 
     public ResponseEntity<CatalogoDeProducto> obtenerProductoPorID(final String productID) {
-
         CatalogoDeProducto catalogoDeProducto = this.catalogoDeProductosRepository.findByProductoID(productID).orElse(null);
 
         if (catalogoDeProducto != null) {
