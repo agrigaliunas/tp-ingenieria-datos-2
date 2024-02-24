@@ -52,5 +52,8 @@ public class Carrito {
     public void addNewProduct(final Producto product) {
         this.productosActual.add(product);
     }
-
+    
+    public void actualizarEstado() {
+    	this.productosAnterior.addAll(productosActual);
+    }
 }

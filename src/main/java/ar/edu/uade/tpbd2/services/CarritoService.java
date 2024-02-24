@@ -36,6 +36,7 @@ public class CarritoService {
         Carrito carrito = this.carritoRepository.findById(carritoId).orElse(null);
 
         if (carrito != null) {
+        	carrito.actualizarEstado();
             carrito.addNewProduct(producto);
 
             this.carritoRepository.save(carrito);
