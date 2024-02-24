@@ -1,7 +1,7 @@
 package ar.edu.uade.tpbd2.services;
 
 import ar.edu.uade.tpbd2.persistence.model.Carrito;
-import ar.edu.uade.tpbd2.persistence.model.CatalogoDeProductos;
+import ar.edu.uade.tpbd2.persistence.model.CatalogoDeProducto;
 import ar.edu.uade.tpbd2.repositories.CatalogoDeProductosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,19 +14,19 @@ public class CatalogoDeProductosService {
     @Autowired
     private CatalogoDeProductosRepository catalogoDeProductosRepository;
 
-    public ResponseEntity<Carrito> obtenerProductoPorID(final Integer productID) {
+    public ResponseEntity<CatalogoDeProducto> obtenerProductoPorID(final String productID) {
 
-        Carrito carrito = this.catalogoDeProductosRepository.findByNickname(productID).orElse(null);
+        CatalogoDeProducto catalogoDeProducto = this.catalogoDeProductosRepository.findByProductoID(productID).orElse(null);
 
-        if (carrito != null) {
-            return ResponseEntity.status(HttpStatus.OK).body(carrito);
+        if (catalogoDeProducto != null) {
+            return ResponseEntity.status(HttpStatus.OK).body(catalogoDeProducto);
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(carrito);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(catalogoDeProducto);
         }
     }
 
 
-    public CatalogoDeProductos crearProducto(final CatalogoDeProductos request) {
+    public CatalogoDeProducto crearProducto(final CatalogoDeProducto request) {
         return this.catalogoDeProductosRepository.insert(request);
     }
 }

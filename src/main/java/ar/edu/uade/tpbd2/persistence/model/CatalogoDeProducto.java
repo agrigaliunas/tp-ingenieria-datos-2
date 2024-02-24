@@ -2,22 +2,33 @@ package ar.edu.uade.tpbd2.persistence.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
 @Document(collection = "catalogo_de_productos")
-public class CatalogoDeProductos {
+public class CatalogoDeProducto {
 
     @Id
-    private Integer productoID;
+    private String productoID;
+    @Field("nombre")
     private String nombre;
+    @Field("marca")
     private String marca;
+    @Field("descripcion")
     private String descripcion;
+    @Field("precio")
     private Float precio;
+    @Field("stock_actual")
     private Integer stockActual;
+    @Field("categoria")
     private String categoria;
-    private Date ultimaActualizacion;
+
+    @Field("ultima_actualizacion")
+    private LocalDateTime ultimaActualizacion;
+    @Field("actividades")
     private List<Actividad> actividades;
 
     public List<Actividad> getActividades() {
@@ -84,11 +95,11 @@ public class CatalogoDeProductos {
         this.categoria = categoria;
     }
 
-    public Date getUltimaActualizacion() {
+    public LocalDateTime getUltimaActualizacion() {
         return this.ultimaActualizacion;
     }
 
-    public void setUltimaActualizacion(final Date ultimaActualizacion) {
+    public void setUltimaActualizacion(final LocalDateTime ultimaActualizacion) {
         this.ultimaActualizacion = ultimaActualizacion;
     }
 }

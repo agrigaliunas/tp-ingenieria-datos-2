@@ -1,5 +1,5 @@
 {
-  "producto_id": 1,
+  "producto_id": "1",
   "nombre": "Producto de ejemplo",
   "marca": "Marca de ejemplo",
   "descripcion": "Esta es una descripción de ejemplo para el producto.",
