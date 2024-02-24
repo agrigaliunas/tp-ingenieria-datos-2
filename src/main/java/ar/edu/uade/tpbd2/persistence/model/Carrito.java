@@ -54,7 +54,7 @@ public class Carrito {
     }
     
     public void actualizarEstado() {
-    	this.productosAnterior.addAll(productosActual);
+    	this.productosAnterior = this.productosActual;
     }
     
     public void deleteProduct(final Producto product) {

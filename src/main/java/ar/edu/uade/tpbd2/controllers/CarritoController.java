@@ -49,16 +49,11 @@ public class CarritoController {
     }
     
     @DeleteMapping("/borrar/{carritoId}/{productoId}")
-    public ResponseEntity<Carrito> eliminarProducto(@PathVariable final String carritoId, @PathVariable final String productoId) {
+    public ResponseEntity<String> eliminarProducto(@PathVariable final String carritoId, @PathVariable final String productoId) {
         try {
             return this.carritoService.eliminarProducto(carritoId, productoId);
         } catch (Exception e) {
-            // TODO:
-            /*
-             * cambiar body del response internal server error
-             *
-             */
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new Carrito());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
     }
 
