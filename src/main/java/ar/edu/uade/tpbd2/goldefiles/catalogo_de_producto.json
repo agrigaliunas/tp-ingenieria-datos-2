@@ -1,0 +1,26 @@
+{
+  "producto_id": 1,
+  "nombre": "Producto de ejemplo",
+  "marca": "Marca de ejemplo",
+  "descripcion": "Esta es una descripción de ejemplo para el producto.",
+  "precio": 20.50,
+  "stock_actual": 100,
+  "categoria": "Electrónica",
+  "ultima_actualizacion": "2024-02-24T12:00:00Z",
+  "actividades": [
+    {
+      "campo_actualizado": "precio",
+      "valor_anterior": "19.99",
+      "valor_actual": "20.50",
+      "fecha_de_actividad": "2024-02-23T15:30:00Z",
+      "comentario": "Se actualizó el precio del producto."
+    },
+    {
+      "campo_actualizado": "stock_actual",
+      "valor_anterior": "90",
+      "valor_actual": "100",
+      "fecha_de_actividad": "2024-02-24T10:00:00Z",
+      "comentario": "Se añadió stock al producto."
+    }
+  ]
+}
