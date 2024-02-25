@@ -16,12 +16,12 @@ public class FacturacionController {
 
     @Autowired
     private FacturacionService facturacionService;
-    
+
     @GetMapping("")
     public List<Venta> getAll() {
         return this.facturacionService.getAllVentas();
     }
 
-    
-    
+
+
 }

@@ -11,6 +11,6 @@ import ar.edu.uade.tpbd2.persistence.Venta;
 @Repository
 public interface FacturacionRepository extends JpaRepository<Venta, Long> {
 
-    @Query(value = "SELECT * FROM dbo.facturacion", nativeQuery = true)
+    @Query(value = "select * from facturacion", nativeQuery = true)
     List<Venta> findAllVentas();
 }
