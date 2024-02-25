@@ -1,6 +1,5 @@
 package ar.edu.uade.tpbd2.repositories;
 
-import ar.edu.uade.tpbd2.persistence.model.Carrito;
 import ar.edu.uade.tpbd2.persistence.model.CatalogoDeProducto;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
@@ -13,4 +12,8 @@ public interface CatalogoDeProductosRepository extends MongoRepository<CatalogoD
     @Query("{ 'productoID' : ?0 }")
     Optional<CatalogoDeProducto> findByProductoID(final String productoID);
 
+    
+
 }
+
+

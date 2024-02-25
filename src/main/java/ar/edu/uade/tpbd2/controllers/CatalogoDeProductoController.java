@@ -24,4 +24,12 @@ public class CatalogoDeProductoController {
         System.out.println(request);
         return this.catalogoDeProductosService.crearProducto(request);
     }
+
+    //TODO
+    /*
+     * Eliminar producto
+     * 
+     * Modificar campo (hay q guardar todos los cambios)
+     */
+
 }
