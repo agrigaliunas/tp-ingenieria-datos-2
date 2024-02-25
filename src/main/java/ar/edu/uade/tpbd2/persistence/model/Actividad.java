@@ -12,7 +12,12 @@ public class Actividad {
 
     private LocalDateTime fechaDeActividad;
 
-    private String comentario;
+    public Actividad(String campoActualizado, String valorAnterior, String valorActual) {
+        this.campoActualizado = campoActualizado;
+        this.valorAnterior = valorActual;
+        this.valorActual = valorActual;
+        this.fechaDeActividad = LocalDateTime.now();
+    }
 
     public String getCampoActualizado() {
         return this.campoActualizado;
@@ -46,14 +51,6 @@ public class Actividad {
         this.fechaDeActividad = fechaDeActividad;
     }
 
-    public String getComentario() {
-        return this.comentario;
-    }
-
-    public void setComentario(final String comentario) {
-        this.comentario = comentario;
-    }
-
     @Override
     public String toString() {
         return "Actividad{" +
@@ -61,7 +58,6 @@ public class Actividad {
                 ", valorAnterior='" + valorAnterior + '\'' +
                 ", valorActual='" + valorActual + '\'' +
                 ", fechaDeActividad=" + fechaDeActividad +
-                ", comentario='" + comentario + '\'' +
                 '}';
     }
 }
