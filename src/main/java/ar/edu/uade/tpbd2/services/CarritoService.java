@@ -60,5 +60,6 @@ public class CarritoService {
     // TODO:
     // implement
     public ResponseEntity<String> eliminarProducto(final String carritoId, final String productoId) throws Exception {
+        return null;
     }
 }
