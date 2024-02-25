@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name="Facturacion")
 public class Venta {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_facturacion")
@@ -20,6 +20,10 @@ public class Venta {
 
     @Column(name = "Fecha_fact")
     private Date fechaFacturacion;
+
+    @Column(name = "ID_cliente")
+    private int idCliente;
+
 
 
 }
