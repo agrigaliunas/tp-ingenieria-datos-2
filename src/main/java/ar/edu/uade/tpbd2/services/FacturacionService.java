@@ -10,11 +10,11 @@ import ar.edu.uade.tpbd2.repositories.FacturacionRepository;
 
 @Service
 public class FacturacionService {
-    
+
     @Autowired
     private FacturacionRepository facturacionRepository;
 
     public List<Venta> getAllVentas() {
-        return this.facturacionRepository.findAll();
+        return this.facturacionRepository.findAllVentas();
     }
 }

@@ -2,15 +2,9 @@ package ar.edu.uade.tpbd2.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
-
-import com.mongodb.BasicDBObject;
 
 import ar.edu.uade.tpbd2.persistence.model.Carrito;
 import ar.edu.uade.tpbd2.persistence.model.Producto;
@@ -21,7 +15,7 @@ public class CarritoService {
 
 	@Autowired
 	public MongoTemplate mongoTemplate;
-	
+
     @Autowired
     private CarritoRepository carritoRepository;
 
@@ -56,7 +50,7 @@ public class CarritoService {
 
         return ResponseEntity.status(HttpStatus.OK).body(carrito);
     }
-    
+
     // TODO:
     // implement
     public ResponseEntity<String> eliminarProducto(final String carritoId, final String productoId) throws Exception {
