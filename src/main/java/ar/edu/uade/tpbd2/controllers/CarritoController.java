@@ -1,7 +1,9 @@
 package ar.edu.uade.tpbd2.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ar.edu.uade.tpbd2.persistence.model.Carrito;
+import ar.edu.uade.tpbd2.persistence.model.Producto;
 import ar.edu.uade.tpbd2.services.CarritoService;
 
 @RestController
@@ -28,6 +31,30 @@ public class CarritoController {
     @PostMapping("/crearCarrito")
     public Carrito crearCarritoEntero(@RequestBody final Carrito request) {
         return this.carritoService.crearCarrito(request);
+    }
+
+
+    @PostMapping("/agregar/{carritoId}")
+    public ResponseEntity<Carrito> agregarProducto(@PathVariable final String carritoId, @RequestBody final Producto producto) {
+        try {
+            return this.carritoService.agregarProducto(carritoId, producto);
+        } catch (Exception e) {
+            // TODO:
+            /*
+             * cambiar body del response internal server error
+             *
+             */
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new Carrito());
+        }
+    }
+    
+    @DeleteMapping("/borrar/{carritoId}/{productoId}")
+    public ResponseEntity<String> eliminarProducto(@PathVariable final String carritoId, @PathVariable final String productoId) {
+        try {
+            return this.carritoService.eliminarProducto(carritoId, productoId);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
     }
 
     // TODO:

@@ -49,4 +49,15 @@ public class Carrito {
         this.nickname = nickname;
     }
 
+    public void addNewProduct(final Producto product) {
+        this.productosActual.add(product);
+    }
+    
+    public void actualizarEstado() {
+    	this.productosAnterior = this.productosActual;
+    }
+    
+    public void deleteProduct(final Producto product) {
+    	this.productosActual.remove(product);
+    }
 }
