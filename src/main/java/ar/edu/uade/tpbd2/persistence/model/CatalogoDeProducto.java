@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Document(collection = "catalogo_de_productos")
@@ -21,6 +22,9 @@ public class CatalogoDeProducto {
     private List<Actividad> actividades;
 
     public List<Actividad> getActividades() {
+        if (this.actividades == null){
+            this.actividades = new ArrayList<>();
+        }
         return this.actividades;
     }
 
@@ -43,6 +47,7 @@ public class CatalogoDeProducto {
     public void setProductoID(final String productoID) {
         this.productoID = productoID;
     }
+
     public String getNombre() {
         return this.nombre;
     }
@@ -101,16 +106,48 @@ public class CatalogoDeProducto {
 
     @Override
     public String toString() {
-        return "CatalogoDeProducto{" +
-                "productoID=" + productoID +
-                ", nombre='" + nombre + '\'' +
-                ", marca='" + marca + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                ", precio=" + precio +
-                ", stockActual=" + stockActual +
-                ", categoria='" + categoria + '\'' +
-                ", ultimaActualizacion=" + ultimaActualizacion +
-                ", actividades=" + actividades +
-                '}';
+        return "CatalogoDeProducto{" + "productoID=" + productoID + ", nombre='" + nombre + '\'' + ", marca='" + marca + '\'' + ", descripcion='" + descripcion + '\'' + ", precio=" + precio + ", stockActual=" + stockActual + ", categoria='" + categoria + '\'' + ", ultimaActualizacion=" + ultimaActualizacion + ", actividades=" + actividades + '}';
     }
+
+    public void ActualizarCatalogoDeProducto(CatalogoDeProducto actual) {
+
+        if (this.actividades == null) {
+            this.actividades = new ArrayList<>();
+        }
+        if (actual.productoID != null && !this.productoID.equals(actual.getProductoID())) {
+            this.actividades.add(new Actividad("productoID", this.productoID, actual.getProductoID()));
+            this.productoID = actual.getProductoID();
+        }
+        if (actual.nombre != null && !this.nombre.equals(actual.getNombre())) {
+            this.actividades.add(new Actividad("nombre", this.nombre, actual.getNombre()));
+            this.nombre = actual.getNombre();
+        }
+        if (actual.marca != null && !this.marca.equals(actual.getMarca())) {
+            this.actividades.add(new Actividad("marca", this.marca, actual.getMarca()));
+            this.marca = actual.getMarca();
+        }
+        if (actual.descripcion != null && !this.descripcion.equals(actual.getDescripcion())) {
+            this.actividades.add(new Actividad("descripcion", this.descripcion, actual.getDescripcion()));
+            this.descripcion = actual.getDescripcion();
+        }
+        if (actual.precio != null && !this.precio.equals(actual.getPrecio())) {
+            this.actividades.add(new Actividad("precio", String.valueOf(this.precio), String.valueOf(actual.getPrecio())));
+            this.precio = actual.getPrecio();
+        }
+        if (actual.stockActual != null && !this.stockActual.equals(actual.getStockActual())) {
+            this.actividades.add(new Actividad("stockActual", String.valueOf(this.stockActual), String.valueOf(actual.getStockActual())));
+            this.stockActual = actual.getStockActual();
+        }
+        if (actual.categoria != null && !this.categoria.equals(actual.getCategoria())) {
+            this.actividades.add(new Actividad("categoria", this.categoria, actual.getCategoria()));
+            this.categoria = actual.getCategoria();
+        }
+
+        this.ultimaActualizacion = LocalDateTime.now();
+    }
+
+    public void unirActividades(CatalogoDeProducto otroProducto) {
+        this.actividades.addAll(otroProducto.actividades);
+    }
+
 }

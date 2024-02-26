@@ -14,22 +14,22 @@ public class CatalogoDeProductoController {
     public CatalogoDeProductosService catalogoDeProductosService;
 
     @GetMapping("/{productoID}")
-    public ResponseEntity<CatalogoDeProducto> obtenerPorNickname(@PathVariable("productoID") final String productoID) {
-        System.out.println(productoID);
-        return this.catalogoDeProductosService.obtenerProductoPorID(productoID);
+    public ResponseEntity<CatalogoDeProducto> obtenerPorProducto(@PathVariable("productoID") final String productoID) {
+        return this.catalogoDeProductosService.obtenerCatalogoDeProductoPorID(productoID);
     }
 
     @PostMapping("")
-    public CatalogoDeProducto crearProducto(@RequestBody final CatalogoDeProducto request) {
-        System.out.println(request);
-        return this.catalogoDeProductosService.crearProducto(request);
+    public ResponseEntity<CatalogoDeProducto> crearProducto(@RequestBody final CatalogoDeProducto request) {
+        return this.catalogoDeProductosService.crearCatalogoProductoProducto(request);
     }
 
-    //TODO
-    /*
-     * Eliminar producto
-     * 
-     * Modificar campo (hay q guardar todos los cambios)
-     */
+    @PutMapping("/{productoID}")
+    public ResponseEntity<CatalogoDeProducto> actualizarProducto(@PathVariable("productoID") final String productoID, @RequestBody final CatalogoDeProducto request) {
+        return this.catalogoDeProductosService.actualizarCatalogoDeProducto(productoID, request);
+    }
 
+    @DeleteMapping("/{productoID}")
+    public ResponseEntity<Void> actualizarProducto(@PathVariable("productoID") final String productoID) {
+        return this.catalogoDeProductosService.borrarCatalogoDeProducto(productoID);
+    }
 }
