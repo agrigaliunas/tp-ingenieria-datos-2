@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,6 +33,7 @@ public class Venta {
     private String idCliente;
 
     @OneToMany(mappedBy = "facturacion", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<DetalleFacturacion> detallesFacturacion;
 
     public List<DetalleFacturacion> getDetallesFacturacion() {

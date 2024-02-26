@@ -15,7 +15,7 @@ public class FacturacionService {
     private FacturacionRepository facturacionRepository;
 
     public List<Venta> getAllVentas() {
-        return this.facturacionRepository.findAll();
+        return this.facturacionRepository.findAllWithDetalleFact();
     }
 
     public Venta createVenta(final Venta venta) {

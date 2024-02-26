@@ -1,6 +1,8 @@
 package ar.edu.uade.tpbd2.persistence.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,6 +27,7 @@ public class DetalleFacturacion {
 
     @ManyToOne
     @JoinColumn(name = "ID_facturacion", nullable = false)
+    @JsonBackReference
     private Venta facturacion;
 
     public Long getId() {
