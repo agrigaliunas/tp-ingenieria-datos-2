@@ -11,6 +11,7 @@ import ar.edu.uade.tpbd2.repositories.UsuarioRepository;
 
 @Service
 public class UsuarioService {
+
     @Autowired
     private RedisTemplate<String, Usuario> redisTemplate;
     @Autowired

@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import ar.edu.uade.tpbd2.persistence.model.mongo.Carrito;
+import ar.edu.uade.tpbd2.persistence.model.mongo.Pedido;
 import ar.edu.uade.tpbd2.persistence.model.mongo.Producto;
 import ar.edu.uade.tpbd2.repositories.CarritoRepository;
 
@@ -18,6 +19,9 @@ public class CarritoService {
 
     @Autowired
     private CarritoRepository carritoRepository;
+
+    @Autowired
+    private PedidoService pedidoService;
 
     public ResponseEntity<Carrito> obtenerCarritoPorNickname(final String nickname) {
         Carrito carrito = this.carritoRepository.findByNickname(nickname)
@@ -99,6 +103,12 @@ public class CarritoService {
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Carrito no encontrado");
 
+    }
+
+    public ResponseEntity<Pedido> confirmarCarritoYCrearPedido(final Pedido pedido) {
+        Pedido pedidoCreado = this.pedidoService.crearPedido(pedido);
+
+        return ResponseEntity.ok(pedidoCreado);
     }
 
     public boolean productoExistsInCarrito(final Carrito carrito, final String productoId) {

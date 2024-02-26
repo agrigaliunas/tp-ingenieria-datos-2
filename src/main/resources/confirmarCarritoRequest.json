@@ -1,0 +1,28 @@
+{
+    "carrito": {
+        "id": "65dcb92d5baccb2bb36a8f3f",
+        "nickname": "agustingriga",
+        "productosActual": [
+            {
+                "productoId": 111,
+                "nombre": "IPhone 13",
+                "cantidad": 1,
+                "precioUnitario": 1000000.0,
+                "descripcion": "Apple IPhone 13"
+            },
+            {
+                "productoId": 112,
+                "nombre": "Samsung galaxy",
+                "cantidad": 1,
+                "precioUnitario": 1000000.0,
+                "descripcion": "Samsung galaxy s24"
+            }
+        ],
+        "productosAnterior": []
+    },
+    "nombreUsuario": "Agustin",
+    "apellidoUsuario": "Grigaliunas",
+    "email": "agustin@gmail.com",
+    "domicilio": "Calle falsa 123",
+    "telefono": "1112345678"
+}

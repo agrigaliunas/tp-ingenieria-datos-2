@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ar.edu.uade.tpbd2.persistence.model.mongo.Carrito;
+import ar.edu.uade.tpbd2.persistence.model.mongo.Pedido;
 import ar.edu.uade.tpbd2.persistence.model.mongo.Producto;
 import ar.edu.uade.tpbd2.services.CarritoService;
 
@@ -51,6 +52,18 @@ public class CarritoController {
     @DeleteMapping("borrar/{nickname}")
     public ResponseEntity<String> eliminarCarrito(@PathVariable("nickname") final String nickname) {
         return this.carritoService.eliminarCarrito(nickname);
+    }
+
+    /*
+     * Cuando se apreta en confirmar carrito del lado frontend,
+     * se envia una request de Pedido con los detalles del carrito y el usuario almacenado en la sesion.
+     *
+     */
+
+    // IDEA: cuando se confirma, actualizar sql de actividad usuario y en base a eso calcular actividad.
+    @PostMapping("/confirmarCarrito")
+    public ResponseEntity<Pedido> confirmarCarrito(@RequestBody final Pedido request) {
+        return this.carritoService.confirmarCarritoYCrearPedido(request);
     }
 
 }
