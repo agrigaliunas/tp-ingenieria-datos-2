@@ -1,14 +1,15 @@
 package ar.edu.uade.tpbd2.repositories;
 
-import ar.edu.uade.tpbd2.persistence.model.CatalogoDeProducto;
+import java.util.Optional;
+
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 
-import java.util.Optional;
+import ar.edu.uade.tpbd2.persistence.model.CatalogoDeProducto;
 
 public interface CatalogoDeProductosRepository extends MongoRepository<CatalogoDeProducto, String> {
 
-    // ?0 corresponde al primer parametro de findByNickname
+    // ?0 corresponde al primer parametro
     @Query("{ 'productoID' : ?0 }")
     Optional<CatalogoDeProducto> findByProductoID(final String productoID);
 

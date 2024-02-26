@@ -1,12 +1,12 @@
 package ar.edu.uade.tpbd2.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,47 +29,28 @@ public class CarritoController {
     }
 
     @PostMapping("/crearCarrito")
-    public Carrito crearCarritoEntero(@RequestBody final Carrito request) {
+    public ResponseEntity<Carrito> crearCarritoEntero(@RequestBody final Carrito request) {
         return this.carritoService.crearCarrito(request);
     }
 
-    @PostMapping("/agregar/{carritoId}")
-    public ResponseEntity<Carrito> agregarProducto(@PathVariable final String carritoId, @RequestBody final Producto producto) {
-        try {
-            return this.carritoService.agregarProducto(carritoId, producto);
-        } catch (Exception e) {
-            // TODO:
-            /*
-             * cambiar body del response internal server error
-             *
-             */
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new Carrito());
-        }
-    }
-    
-    @DeleteMapping("/borrar/{carritoId}/{productoId}")
-    public ResponseEntity<String> eliminarProducto(@PathVariable final String carritoId, @PathVariable final String productoId) {
-        try {
-            return this.carritoService.eliminarProducto(carritoId, productoId);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-        }
+    @PostMapping("/agregar/{nickname}")
+    public ResponseEntity<Carrito> agregarProducto(@PathVariable("nickname") final String nickname, @RequestBody final Producto producto) {
+        return this.carritoService.agregarProducto(nickname, producto);
     }
 
-    // TODO:
-    /*
-     * POST
-     * Agregar producto
-     *
-     * PUT
-     * Actualizar cantidad producto
-     *
-     * DELETE
-     * Eliminar producto
-     *
-     * DELETE
-     * Vaciar carrito
-     */
+    @PutMapping("/actualizar/{nickname}")
+    public ResponseEntity<Carrito> actualizarProducto(@PathVariable("nickname") final String nickname, @RequestBody final Producto producto) {
+        return this.carritoService.actualizarProducto(nickname, producto);
+    }
 
+    @PutMapping("/borrar/{nickname}/{productoId}")
+    public ResponseEntity<Carrito> eliminarProducto(@PathVariable("nickname") final String nickname, @PathVariable("productoId") final String productoId) {
+        return this.carritoService.eliminarProducto(nickname, productoId);
+    }
+
+    @DeleteMapping("borrar/{nickname}")
+    public ResponseEntity<String> eliminarCarrito(@PathVariable("nickname") final String nickname) {
+        return this.carritoService.eliminarCarrito(nickname);
+    }
 
 }

@@ -1,10 +1,13 @@
 package ar.edu.uade.tpbd2.services;
 
-import ar.edu.uade.tpbd2.persistence.model.Usuario;
-import ar.edu.uade.tpbd2.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import ar.edu.uade.tpbd2.persistence.model.Usuario;
+import ar.edu.uade.tpbd2.repositories.UsuarioRepository;
 
 @Service
 public class UsuarioService {
@@ -13,19 +16,32 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public Usuario obtenerPorID(String id) {
-        return usuarioRepository.findById(id).get();
+    public ResponseEntity<Usuario> obtenerPorID(final String id) {
+        Usuario fetchUsuario = this.usuarioRepository.findById(id)
+                .orElse(null);
+        if (fetchUsuario != null) {
+            return ResponseEntity.status(HttpStatus.OK).body(fetchUsuario);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(fetchUsuario);
+        }
     }
 
-    public Usuario guardarUsuarioPorNickname(Usuario usuario) {
-        return usuarioRepository.save(usuario);
+    public Usuario guardarUsuarioPorNickname(final Usuario usuario) {
+        return this.usuarioRepository.save(usuario);
     }
 
-    public Usuario obtenerPorNickname(String nickname) {
-        return usuarioRepository.findByNickname(nickname);
+    public ResponseEntity<Usuario> obtenerPorNickname(final String nickname) {
+        Usuario fetchUsuario = this.usuarioRepository.findByNickname(nickname)
+                .orElse(null);
+
+        if (fetchUsuario != null) {
+            return ResponseEntity.status(HttpStatus.OK).body(fetchUsuario);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(fetchUsuario);
+        }
     }
 
-    public void eliminarUsuarioPorNickname(String nickname) {
-        redisTemplate.delete(nickname);
+    public void eliminarUsuarioPorNickname(final String nickname) {
+        this.redisTemplate.delete(nickname);
     }
 }

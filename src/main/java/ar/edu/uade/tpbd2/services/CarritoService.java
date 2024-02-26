@@ -20,7 +20,6 @@ public class CarritoService {
     private CarritoRepository carritoRepository;
 
     public ResponseEntity<Carrito> obtenerCarritoPorNickname(final String nickname) {
-
         Carrito carrito = this.carritoRepository.findByNickname(nickname)
                 .orElse(null);
 
@@ -32,28 +31,75 @@ public class CarritoService {
     }
 
 
-    public Carrito crearCarrito(final Carrito request) {
-        return this.carritoRepository.insert(request);
+    public ResponseEntity<Carrito> crearCarrito(final Carrito request) {
+        Carrito carrito = this.carritoRepository.insert(request);
+        return ResponseEntity.status(HttpStatus.OK).body(carrito);
     }
 
-    public ResponseEntity<Carrito> agregarProducto(final String carritoId, final Producto producto) throws Exception {
-        Carrito carrito = this.carritoRepository.findById(carritoId).orElse(null);
+    public ResponseEntity<Carrito> agregarProducto(final String nickname, final Producto producto) {
+        Carrito carrito = this.carritoRepository.findByNickname(nickname).orElse(null);
 
         if (carrito != null) {
         	carrito.actualizarEstado();
             carrito.addNewProduct(producto);
 
             this.carritoRepository.save(carrito);
-        }else {
-            throw new Exception("No se encontro el carrito de este id: " + carritoId);
+            return ResponseEntity.status(HttpStatus.OK).body(carrito);
+
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new Carrito());
         }
 
-        return ResponseEntity.status(HttpStatus.OK).body(carrito);
     }
 
-    // TODO:
-    // implement
-    public ResponseEntity<String> eliminarProducto(final String carritoId, final String productoId) throws Exception {
-        return null;
+    public ResponseEntity<Carrito> actualizarProducto(final String nickname, final Producto producto) {
+        Carrito carrito = this.carritoRepository.findByNickname(nickname).orElse(null);
+
+        if (carrito != null) {
+            carrito.actualizarEstado();
+            carrito.getProductosActual().forEach(p -> {
+                if (p.getProductoId() == producto.getProductoId()) {
+                    p.setCantidad(producto.getCantidad());
+                    p.setNombre(producto.getNombre());
+                    p.setDescripcion(producto.getDescripcion());
+                    p.setPrecioUnitario(producto.getPrecioUnitario());
+                    this.carritoRepository.save(carrito);
+                }
+            });
+            return ResponseEntity.status(HttpStatus.OK).body(carrito);
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new Carrito());
+        }
+    }
+
+    public ResponseEntity<Carrito> eliminarProducto(final String nickname, final String productoId) {
+        Carrito carrito = this.carritoRepository.findByNickname(nickname).orElse(null);
+
+        if (carrito != null) {
+
+            carrito.actualizarEstado();
+
+            boolean productoExists = productoExistsInCarrito(carrito, productoId);
+
+            if (productoExists) {
+                carrito.getProductosActual().removeIf(p -> p.getProductoId()== Integer.valueOf(productoId));
+                this.carritoRepository.save(carrito);
+                return ResponseEntity.status(HttpStatus.OK).body(carrito);
+            }
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new Carrito());
+    }
+
+    public ResponseEntity<String> eliminarCarrito(final String nickname) {
+        Carrito carrito = this.carritoRepository.findByNickname(nickname).orElse(null);
+
+        if (carrito != null) {
+            this.carritoRepository.delete(carrito);
+        }
+        return ResponseEntity.status(HttpStatus.OK).body("Carrito borrado con exito");
+    }
+
+    public boolean productoExistsInCarrito(final Carrito carrito, final String productoId) {
+        return carrito.getProductosActual().stream().anyMatch(p -> p.getProductoId() == Integer.valueOf(productoId));
     }
 }

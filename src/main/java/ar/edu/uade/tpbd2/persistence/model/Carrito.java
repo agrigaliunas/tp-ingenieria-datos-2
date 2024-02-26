@@ -1,5 +1,6 @@
 package ar.edu.uade.tpbd2.persistence.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -52,11 +53,25 @@ public class Carrito {
     public void addNewProduct(final Producto product) {
         this.productosActual.add(product);
     }
-    
+
     public void actualizarEstado() {
-    	this.productosAnterior = this.productosActual;
+        List<Producto> copiaProductosActual = new ArrayList<>();
+
+        for (Producto producto : this.productosActual) {
+            Producto copiaProducto = new Producto();
+            copiaProducto.setProductoId(producto.getProductoId());
+            copiaProducto.setNombre(producto.getNombre());
+            copiaProducto.setCantidad(producto.getCantidad());
+            copiaProducto.setPrecioUnitario(producto.getPrecioUnitario());
+            copiaProducto.setDescripcion(producto.getDescripcion());
+
+            copiaProductosActual.add(copiaProducto);
+        }
+
+        // Asignar la copia profunda a la lista productosAnterior
+        this.productosAnterior = copiaProductosActual;
     }
-    
+
     public void deleteProduct(final Producto product) {
     	this.productosActual.remove(product);
     }

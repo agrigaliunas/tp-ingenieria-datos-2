@@ -15,5 +15,4 @@ public interface CarritoRepository extends MongoRepository<Carrito, String>{
     @Query("{ 'nickname' : ?0 }")
     Optional<Carrito> findByNickname(final String nickname);
 
-    Optional<Carrito> findByIdAndProductosActual_ProductoId(String carritoId, String productoId);
 }

@@ -1,10 +1,13 @@
 package ar.edu.uade.tpbd2.repositories;
 
-import ar.edu.uade.tpbd2.persistence.model.Usuario;
+import java.util.Optional;
+
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import ar.edu.uade.tpbd2.persistence.model.Usuario;
+
 @Repository
 public interface UsuarioRepository extends CrudRepository<Usuario, String> {
-    Usuario findByNickname(String nickname);
+    Optional<Usuario> findByNickname(String nickname);
 }
