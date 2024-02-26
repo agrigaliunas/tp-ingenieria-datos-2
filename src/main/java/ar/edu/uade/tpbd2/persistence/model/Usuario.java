@@ -1,21 +1,29 @@
 package ar.edu.uade.tpbd2.persistence.model;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import org.springframework.data.redis.core.RedisHash;
+
+@RedisHash("Usuario")
 public class Usuario {
+    @Id
+    @GeneratedValue
+    private String id;
     private String nickname;
     private String nombre;
     private String apellido;
     private String email;
-    private String contraseña;
+    private String contrasena;
     private String domicilio;
     private String telefono;
 
     // Constructor
-    public Usuario(String nickname, String nombre, String apellido, String email, String contraseña, String domicilio, String telefono) {
+    public Usuario(String nickname, String nombre, String apellido, String email, String contrasena, String domicilio, String telefono) {
         this.nickname = nickname;
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
-        this.contraseña = contraseña;
+        this.contrasena = contrasena;
         this.domicilio = domicilio;
         this.telefono = telefono;
     }
@@ -53,12 +61,12 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public String getDomicilio() {

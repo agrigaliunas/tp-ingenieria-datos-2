@@ -15,7 +15,7 @@ public class UsuarioController {
 
     @GetMapping("/{nickname}")
     public Usuario obtenerPorNickname(@PathVariable("nickname") final String nickname) {
-        return this.usuarioService.obtenerUsuarioPorNickname(nickname);
+        return this.usuarioService.obtenerPorID(nickname);
     }
 
     @PostMapping("")

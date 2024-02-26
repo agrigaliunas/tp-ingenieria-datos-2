@@ -6,9 +6,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.GenericToStringSerializer;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @Configuration
 public class RedisDB {
@@ -23,7 +22,7 @@ public class RedisDB {
 
     @Bean
     public RedisConnectionFactory redisConnectionFactory() {
-        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory();
+        LettuceConnectionFactory jedisConnectionFactory = new LettuceConnectionFactory();
         jedisConnectionFactory.setHostName(redisHostName);
         jedisConnectionFactory.setPort(redisPort);
         jedisConnectionFactory.setPassword(redisPassword);
@@ -31,11 +30,11 @@ public class RedisDB {
     }
 
     @Bean
-    public RedisTemplate<String, Usuario> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
-        org.springframework.data.redis.core.RedisTemplate<String, Usuario> template = new org.springframework.data.redis.core.RedisTemplate<>();
-        template.setConnectionFactory(redisConnectionFactory);
-        template.setKeySerializer(new StringRedisSerializer());
-        template.setValueSerializer(new GenericToStringSerializer<>(Usuario.class));
+    public RedisTemplate<String, Usuario> redisTemplate() {
+        RedisTemplate<String, Usuario> template = new RedisTemplate<>();
+        template.setConnectionFactory(redisConnectionFactory());
+        //template.setKeySerializer(new StringRedisSerializer());
+        //template.setValueSerializer(new GenericToStringSerializer<>(Usuario.class));
         return template;
     }
 }
