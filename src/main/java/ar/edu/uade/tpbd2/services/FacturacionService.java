@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ar.edu.uade.tpbd2.persistence.Venta;
+import ar.edu.uade.tpbd2.persistence.model.Venta;
 import ar.edu.uade.tpbd2.repositories.FacturacionRepository;
 
 @Service
@@ -15,6 +15,10 @@ public class FacturacionService {
     private FacturacionRepository facturacionRepository;
 
     public List<Venta> getAllVentas() {
-        return this.facturacionRepository.findAllVentas();
+        return this.facturacionRepository.findAll();
+    }
+
+    public Venta createVenta(final Venta venta) {
+        return this.facturacionRepository.save(venta);
     }
 }
