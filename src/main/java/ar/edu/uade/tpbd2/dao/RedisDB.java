@@ -1,5 +1,6 @@
 package ar.edu.uade.tpbd2.dao;
 
+import ar.edu.uade.tpbd2.persistence.model.Usuario;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,11 +31,11 @@ public class RedisDB {
     }
 
     @Bean
-    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
-        RedisTemplate<String, Object> template = new RedisTemplate<>();
+    public RedisTemplate<String, Usuario> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
+        org.springframework.data.redis.core.RedisTemplate<String, Usuario> template = new org.springframework.data.redis.core.RedisTemplate<>();
         template.setConnectionFactory(redisConnectionFactory);
         template.setKeySerializer(new StringRedisSerializer());
-        template.setValueSerializer(new GenericToStringSerializer<>(Object.class));
+        template.setValueSerializer(new GenericToStringSerializer<>(Usuario.class));
         return template;
     }
 }
