@@ -95,8 +95,10 @@ public class CarritoService {
 
         if (carrito != null) {
             this.carritoRepository.delete(carrito);
+            return ResponseEntity.status(HttpStatus.OK).body("Carrito borrado con exito");
         }
-        return ResponseEntity.status(HttpStatus.OK).body("Carrito borrado con exito");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Carrito no encontrado");
+
     }
 
     public boolean productoExistsInCarrito(final Carrito carrito, final String productoId) {

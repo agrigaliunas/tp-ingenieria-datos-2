@@ -21,14 +21,20 @@ public class DetalleFacturacion {
     @Column(name = "ID_det_facturacion")
     private Long id;
 
-    private int cantidad;
-    @Column(name = "Precio_unit")
-    private float precioUnitario;
-
     @ManyToOne
     @JoinColumn(name = "ID_facturacion", nullable = false)
     @JsonBackReference
     private Venta facturacion;
+
+    @ManyToOne
+    @JoinColumn(name = "productoID")
+    private CatalogoProducto producto;
+
+    private int cantidad;
+
+    @Column(name = "Precio_unit")
+    private float precioUnitario;
+
 
     public Long getId() {
         return this.id;
@@ -60,6 +66,14 @@ public class DetalleFacturacion {
 
     public void setFacturacion(final Venta facturacion) {
         this.facturacion = facturacion;
+    }
+
+    public CatalogoProducto getProducto() {
+        return this.producto;
+    }
+
+    public void setProducto(final CatalogoProducto producto) {
+        this.producto = producto;
     }
 
 

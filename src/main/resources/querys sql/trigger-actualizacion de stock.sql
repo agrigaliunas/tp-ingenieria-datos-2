@@ -5,7 +5,7 @@ AFTER INSERT
 AS
 BEGIN
     UPDATE Catalogo_productos
-    SET stockActual = stockActual + i.Cantidad
+    SET stock_actual = stock_actual + i.Cantidad
     FROM Catalogo_productos AS cp
     INNER JOIN inserted AS i ON cp.productoID = i.productoID;
 END;
@@ -16,7 +16,7 @@ AFTER INSERT
 AS
 BEGIN
     UPDATE Catalogo_productos
-    SET stockActual = stockActual - i.Cantidad
+    SET stock_actual = stock_actual - i.Cantidad
     FROM Catalogo_productos AS cp
     INNER JOIN inserted AS i ON cp.productoID = i.productoID;
 END;
