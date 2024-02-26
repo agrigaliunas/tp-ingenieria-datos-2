@@ -6,8 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import ar.edu.uade.tpbd2.persistence.model.Carrito;
-import ar.edu.uade.tpbd2.persistence.model.Producto;
+import ar.edu.uade.tpbd2.persistence.model.mongo.Carrito;
+import ar.edu.uade.tpbd2.persistence.model.mongo.Producto;
 import ar.edu.uade.tpbd2.repositories.CarritoRepository;
 
 @Service

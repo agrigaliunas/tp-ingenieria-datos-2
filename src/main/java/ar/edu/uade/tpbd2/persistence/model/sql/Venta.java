@@ -1,4 +1,4 @@
-package ar.edu.uade.tpbd2.persistence.model;
+package ar.edu.uade.tpbd2.persistence.model.sql;
 
 import java.util.Date;
 import java.util.List;
@@ -13,6 +13,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -29,8 +31,9 @@ public class Venta {
     @CreationTimestamp
     private Date fechaFacturacion;
 
-    @Column(name = "ID_cliente")
-    private String idCliente;
+    @ManyToOne
+    @JoinColumn(name = "nickname")
+    private Cliente cliente;
 
     @OneToMany(mappedBy = "facturacion", cascade = CascadeType.ALL)
     @JsonManagedReference
@@ -52,8 +55,8 @@ public class Venta {
         this.id = id;
     }
 
-    public String getIdCliente() {
-        return this.idCliente;
+    public Cliente getNickname() {
+        return this.cliente;
     }
 
     public Date getFechaFacturacion() {
@@ -64,8 +67,8 @@ public class Venta {
         this.fechaFacturacion = fechaFacturacion;
     }
 
-    public void setIdCliente(final String idCliente) {
-        this.idCliente = idCliente;
+    public void setNickname(final Cliente cliente) {
+        this.cliente = cliente;
     }
 
 }

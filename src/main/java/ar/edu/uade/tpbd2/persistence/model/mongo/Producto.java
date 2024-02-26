@@ -1,4 +1,4 @@
-package ar.edu.uade.tpbd2.persistence.model;
+package ar.edu.uade.tpbd2.persistence.model.mongo;
 
 public class Producto {
 

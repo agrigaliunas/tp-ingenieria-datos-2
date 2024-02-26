@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ar.edu.uade.tpbd2.persistence.model.Carrito;
-import ar.edu.uade.tpbd2.persistence.model.Producto;
+import ar.edu.uade.tpbd2.persistence.model.mongo.Carrito;
+import ar.edu.uade.tpbd2.persistence.model.mongo.Producto;
 import ar.edu.uade.tpbd2.services.CarritoService;
 
 @RestController

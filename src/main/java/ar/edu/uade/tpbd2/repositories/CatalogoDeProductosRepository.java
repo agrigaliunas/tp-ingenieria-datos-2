@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 
-import ar.edu.uade.tpbd2.persistence.model.CatalogoDeProducto;
+import ar.edu.uade.tpbd2.persistence.model.mongo.CatalogoDeProducto;
 
 public interface CatalogoDeProductosRepository extends MongoRepository<CatalogoDeProducto, String> {
 

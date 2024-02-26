@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import ar.edu.uade.tpbd2.persistence.model.Carrito;
+import ar.edu.uade.tpbd2.persistence.model.mongo.Carrito;
 
 @Repository
 public interface CarritoRepository extends MongoRepository<Carrito, String>{

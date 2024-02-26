@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import ar.edu.uade.tpbd2.persistence.model.Usuario;
+import ar.edu.uade.tpbd2.persistence.model.redis.Usuario;
 import ar.edu.uade.tpbd2.repositories.UsuarioRepository;
 
 @Service

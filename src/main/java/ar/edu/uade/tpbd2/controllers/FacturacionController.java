@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ar.edu.uade.tpbd2.persistence.model.Venta;
+import ar.edu.uade.tpbd2.persistence.model.sql.Venta;
 import ar.edu.uade.tpbd2.services.FacturacionService;
 
 @RestController
@@ -23,7 +23,6 @@ public class FacturacionController {
 
     @GetMapping("")
     public ResponseEntity<List<Venta>> getAll() {
-
         try {
             List<Venta> ventas = this.facturacionService.getAllVentas();
             return ResponseEntity.status(HttpStatus.OK).body(ventas);
@@ -42,7 +41,3 @@ public class FacturacionController {
         }
     }
 }
-
-    // TODO:
-    // AGREGAR FORMA PAGO
-

@@ -1,4 +1,4 @@
-package ar.edu.uade.tpbd2.persistence.model;
+package ar.edu.uade.tpbd2.persistence.model.mongo;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

@@ -1,4 +1,4 @@
-package ar.edu.uade.tpbd2.persistence.model;
+package ar.edu.uade.tpbd2.persistence.model.mongo;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,8 +1,9 @@
-package ar.edu.uade.tpbd2.persistence.model;
+package ar.edu.uade.tpbd2.persistence.model.redis;
+
+import org.springframework.data.redis.core.RedisHash;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import org.springframework.data.redis.core.RedisHash;
 
 @RedisHash("Usuario")
 public class Usuario {
@@ -18,7 +19,7 @@ public class Usuario {
     private String telefono;
 
     // Constructor
-    public Usuario(String nickname, String nombre, String apellido, String email, String contrasena, String domicilio, String telefono) {
+    public Usuario(final String nickname, final String nombre, final String apellido, final String email, final String contrasena, final String domicilio, final String telefono) {
         this.nickname = nickname;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -30,58 +31,58 @@ public class Usuario {
 
     // Getters and Setters
     public String getNickname() {
-        return nickname;
+        return this.nickname;
     }
 
-    public void setNickname(String nickname) {
+    public void setNickname(final String nickname) {
         this.nickname = nickname;
     }
 
     public String getNombre() {
-        return nombre;
+        return this.nombre;
     }
 
-    public void setNombre(String nombre) {
+    public void setNombre(final String nombre) {
         this.nombre = nombre;
     }
 
     public String getApellido() {
-        return apellido;
+        return this.apellido;
     }
 
-    public void setApellido(String apellido) {
+    public void setApellido(final String apellido) {
         this.apellido = apellido;
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(final String email) {
         this.email = email;
     }
 
     public String getContrasena() {
-        return contrasena;
+        return this.contrasena;
     }
 
-    public void setContrasena(String contrasena) {
+    public void setContrasena(final String contrasena) {
         this.contrasena = contrasena;
     }
 
     public String getDomicilio() {
-        return domicilio;
+        return this.domicilio;
     }
 
-    public void setDomicilio(String domicilio) {
+    public void setDomicilio(final String domicilio) {
         this.domicilio = domicilio;
     }
 
     public String getTelefono() {
-        return telefono;
+        return this.telefono;
     }
 
-    public void setTelefono(String telefono) {
+    public void setTelefono(final String telefono) {
         this.telefono = telefono;
     }
 }

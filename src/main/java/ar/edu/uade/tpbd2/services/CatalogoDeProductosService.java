@@ -1,6 +1,6 @@
 package ar.edu.uade.tpbd2.services;
 
-import ar.edu.uade.tpbd2.persistence.model.CatalogoDeProducto;
+import ar.edu.uade.tpbd2.persistence.model.mongo.CatalogoDeProducto;
 import ar.edu.uade.tpbd2.repositories.CatalogoDeProductosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
