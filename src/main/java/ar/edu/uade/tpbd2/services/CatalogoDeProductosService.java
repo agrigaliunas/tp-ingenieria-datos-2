@@ -1,6 +1,5 @@
 package ar.edu.uade.tpbd2.services;
 
-import ar.edu.uade.tpbd2.persistence.model.Carrito;
 import ar.edu.uade.tpbd2.persistence.model.CatalogoDeProducto;
 import ar.edu.uade.tpbd2.repositories.CatalogoDeProductosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,4 +27,5 @@ public class CatalogoDeProductosService {
     public CatalogoDeProducto crearProducto(final CatalogoDeProducto request) {
         return this.catalogoDeProductosRepository.insert(request);
     }
+
 }
