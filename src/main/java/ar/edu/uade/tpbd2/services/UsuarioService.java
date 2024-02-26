@@ -13,12 +13,11 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-
     public Usuario obtenerPorID(String id) {
         return usuarioRepository.findById(id).get();
     }
 
-    public Usuario guardarUsuarioPorNickname( Usuario usuario) {
+    public Usuario guardarUsuarioPorNickname(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
 
