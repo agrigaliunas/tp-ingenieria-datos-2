@@ -49,14 +49,8 @@ public class CatalogoDeProductosService {
             }
 
             catalogoDeProductoAnterior.ActualizarCatalogoDeProducto(catalogoDeProductoActual);
-            System.out.println(catalogoDeProductoAnterior);
-
-            System.out.println("- Actualizar Catalogo nuevo");
-            CatalogoDeProducto nuevoProducto = this.catalogoDeProductosRepository.insert(catalogoDeProductoAnterior);
-
-            System.out.println(nuevoProducto);
-
-            return new ResponseEntity<>(nuevoProducto, HttpStatus.CREATED);
+            CatalogoDeProducto nuevoProducto = this.catalogoDeProductosRepository.save(catalogoDeProductoAnterior);
+            return new ResponseEntity<>(nuevoProducto, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(new CatalogoDeProducto(), HttpStatus.INTERNAL_SERVER_ERROR);
         }

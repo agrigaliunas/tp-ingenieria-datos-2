@@ -14,7 +14,7 @@ public class CatalogoDeProductoController {
     public CatalogoDeProductosService catalogoDeProductosService;
 
     @GetMapping("/{productoID}")
-    public ResponseEntity<CatalogoDeProducto> obtenerPorNickname(@PathVariable("productoID") final String productoID) {
+    public ResponseEntity<CatalogoDeProducto> obtenerPorProducto(@PathVariable("productoID") final String productoID) {
         return this.catalogoDeProductosService.obtenerCatalogoDeProductoPorID(productoID);
     }
 
