@@ -17,7 +17,7 @@ create table Usuarios (
 	)
 
 create table Catalogo_productos (
-	productoID varchar(100) UNIQUE not null,
+	productoID varchar(100) PRIMARY KEY not null,
 	nombre varchar(100) not null,
 	marca varchar(100) not null,
 	descripcion varchar(500) not null,
