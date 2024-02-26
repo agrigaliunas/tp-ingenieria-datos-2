@@ -18,13 +18,11 @@ public class UsuarioService {
         return usuarioRepository.findById(id).get();
     }
 
-    public Usuario guardarUsuarioPorNickname(String nickname, Usuario usuario) {
-        usuarioRepository.save(usuario);
-        return usuario;
+    public Usuario guardarUsuarioPorNickname( Usuario usuario) {
+        return usuarioRepository.save(usuario);
     }
 
-    public Usuario obtenerUsuarioPorNickname(String nickname) {
-
+    public Usuario obtenerPorNickname(String nickname) {
         return usuarioRepository.findByNickname(nickname);
     }
 

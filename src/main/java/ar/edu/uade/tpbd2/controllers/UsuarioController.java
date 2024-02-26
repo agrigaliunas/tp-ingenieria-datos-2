@@ -1,6 +1,5 @@
 package ar.edu.uade.tpbd2.controllers;
 
-import ar.edu.uade.tpbd2.persistence.model.Carrito;
 import ar.edu.uade.tpbd2.persistence.model.Usuario;
 import ar.edu.uade.tpbd2.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,17 +14,17 @@ public class UsuarioController {
 
     @GetMapping("/{nickname}")
     public Usuario obtenerPorNickname(@PathVariable("nickname") final String nickname) {
-        return this.usuarioService.obtenerPorID(nickname);
+        return this.usuarioService.obtenerPorNickname(nickname);
     }
 
     @PostMapping("")
     public Usuario guardarUsuarioPorNickname(@RequestBody final Usuario request) {
-        return this.usuarioService.guardarUsuarioPorNickname(request.getNickname(), request);
+        return this.usuarioService.guardarUsuarioPorNickname(request);
     }
 
     @PutMapping("")
     public Usuario actualizarUsuarioPorNickname(@RequestBody final Usuario request) {
-        return this.usuarioService.guardarUsuarioPorNickname(request.getNickname(), request);
+        return this.usuarioService.guardarUsuarioPorNickname(request);
     }
 
     @DeleteMapping("/{nickname}")
