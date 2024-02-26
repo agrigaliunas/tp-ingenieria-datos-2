@@ -22,7 +22,7 @@ create table Catalogo_productos (
 	marca varchar(100) not null,
 	descripcion varchar(500) not null,
 	precio float not null,
-	stockActual int,
+	stock_actual int,
 	categoria varchar(100),
 	)
 
