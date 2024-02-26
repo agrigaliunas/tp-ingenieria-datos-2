@@ -30,6 +30,6 @@ public class CatalogoDeProductoController {
 
     @DeleteMapping("/{productoID}")
     public ResponseEntity<Void> actualizarProducto(@PathVariable("productoID") final String productoID) {
-        return this.catalogoDeProductosService.deleteCatalogoDeProducto(productoID);
+        return this.catalogoDeProductosService.borrarCatalogoDeProducto(productoID);
     }
 }

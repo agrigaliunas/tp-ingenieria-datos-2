@@ -118,37 +118,37 @@ public class CatalogoDeProducto {
     public List<Actividad> compararCon(CatalogoDeProducto otroProducto) {
         List<Actividad> diferencias = new ArrayList<>();
 
-        // Comparar cada campo y registrar las diferencias encontradas
-        if (!this.productoID.equals(otroProducto.getProductoID())) {
+        if (this.productoID != null && !this.productoID.equals(otroProducto.getProductoID())) {
             diferencias.add(new Actividad("productoID", this.productoID, otroProducto.getProductoID()));
         }
-        if (!this.nombre.equals(otroProducto.getNombre())) {
+        if (this.nombre != null && !this.nombre.equals(otroProducto.getNombre())) {
             diferencias.add(new Actividad("nombre", this.nombre, otroProducto.getNombre()));
         }
-        if (!this.marca.equals(otroProducto.getMarca())) {
+        if (this.marca != null && !this.marca.equals(otroProducto.getMarca())) {
             diferencias.add(new Actividad("marca", this.marca, otroProducto.getMarca()));
         }
-        if (!this.descripcion.equals(otroProducto.getDescripcion())) {
+        if (this.descripcion != null && !this.descripcion.equals(otroProducto.getDescripcion())) {
             diferencias.add(new Actividad("descripcion", this.descripcion, otroProducto.getDescripcion()));
         }
-        if (!this.precio.equals(otroProducto.getPrecio())) {
+        if (this.precio != null && !this.precio.equals(otroProducto.getPrecio())) {
             diferencias.add(new Actividad("precio", String.valueOf(this.precio), String.valueOf(otroProducto.getPrecio())));
         }
-        if (!this.stockActual.equals(otroProducto.getStockActual())) {
+        if (this.stockActual != null && !this.stockActual.equals(otroProducto.getStockActual())) {
             diferencias.add(new Actividad("stockActual", String.valueOf(this.stockActual), String.valueOf(otroProducto.getStockActual())));
         }
-        if (!this.categoria.equals(otroProducto.getCategoria())) {
+        if (this.categoria != null && !this.categoria.equals(otroProducto.getCategoria())) {
             diferencias.add(new Actividad("categoria", this.categoria, otroProducto.getCategoria()));
         }
-        if (!this.ultimaActualizacion.equals(otroProducto.getUltimaActualizacion())) {
+        if (this.ultimaActualizacion != null && !this.ultimaActualizacion.equals(otroProducto.getUltimaActualizacion())) {
             diferencias.add(new Actividad("ultimaActualizacion", this.ultimaActualizacion.toString(), otroProducto.getUltimaActualizacion().toString()));
         }
 
+        System.out.println(diferencias);
         return diferencias;
     }
 
-    public void unirActividades(List<Actividad> nuevasActividades) {
-        this.actividades.addAll(nuevasActividades);
+    public void unirActividades(CatalogoDeProducto otroProducto) {
+        this.actividades.addAll(otroProducto.actividades);
     }
 
 }

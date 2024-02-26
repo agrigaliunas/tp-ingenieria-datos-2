@@ -12,8 +12,7 @@ public interface CatalogoDeProductosRepository extends MongoRepository<CatalogoD
     @Query("{ 'productoID' : ?0 }")
     Optional<CatalogoDeProducto> findByProductoID(final String productoID);
 
-    
-
+    void deleteByProductoID(final String productoID);
 }
 
 

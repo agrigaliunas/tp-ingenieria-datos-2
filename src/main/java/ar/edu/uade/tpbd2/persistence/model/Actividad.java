@@ -12,9 +12,9 @@ public class Actividad {
 
     private LocalDateTime fechaDeActividad;
 
-    public Actividad(String campoActualizado, String valorAnterior, String valorActual) {
+    public Actividad(String campoActualizado, String valorActual, String valorAnterior) {
         this.campoActualizado = campoActualizado;
-        this.valorAnterior = valorActual;
+        this.valorAnterior = valorAnterior;
         this.valorActual = valorActual;
         this.fechaDeActividad = LocalDateTime.now();
     }

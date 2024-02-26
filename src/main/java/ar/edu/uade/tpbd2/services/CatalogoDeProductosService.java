@@ -45,15 +45,21 @@ public class CatalogoDeProductosService {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(catalogoDeProductoActual);
             }
 
+            System.out.println(catalogoDeProductoActual);
             CatalogoDeProducto catalogoDeProductoAnterior = this.catalogoDeProductosRepository.findByProductoID(productoID).orElse(null);
+            System.out.println(catalogoDeProductoAnterior);
             if (catalogoDeProductoAnterior == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(catalogoDeProductoAnterior);
             }
 
             catalogoDeProductoActual.setActividades(new ArrayList<Actividad>());
             catalogoDeProductoActual.setActividades(catalogoDeProductoActual.compararCon(catalogoDeProductoAnterior));
-            catalogoDeProductoActual.unirActividades(catalogoDeProductoAnterior.getActividades());
+            catalogoDeProductoActual.unirActividades(catalogoDeProductoAnterior);
+
+            System.out.println("- Actualizar Catalogo nuevo");
             CatalogoDeProducto nuevoProducto = this.catalogoDeProductosRepository.insert(catalogoDeProductoActual);
+
+            System.out.println(nuevoProducto);
 
             return new ResponseEntity<>(nuevoProducto, HttpStatus.CREATED);
         } catch (Exception e) {
@@ -61,11 +67,13 @@ public class CatalogoDeProductosService {
         }
     }
 
-    public ResponseEntity<Void> deleteCatalogoDeProducto(final String productoID) {
+    public ResponseEntity<Void> borrarCatalogoDeProducto(final String productoID) {
         try {
-            this.catalogoDeProductosRepository.deleteById(productoID);
+            System.out.println("delete - ProductoID:" + productoID);
+            this.catalogoDeProductosRepository.deleteByProductoID(productoID);
             return ResponseEntity.noContent().build();
         } catch (Exception e) {
+            System.out.println("error delete - ProductoID:" + productoID);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
