@@ -54,6 +54,7 @@ create table Det_facturacion (
 	productoID varchar(100) not null,
 	Cantidad int not null,
 	Precio_unit float not null,
+	forma_pago varchar(100) not null,
 	FOREIGN KEY (ID_facturacion) REFERENCES Facturacion(ID_facturacion),
 	FOREIGN KEY (productoID) REFERENCES Catalogo_productos(productoID)
 	)

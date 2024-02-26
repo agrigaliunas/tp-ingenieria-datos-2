@@ -6,7 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Clientes")
+@Table(name = "Usuarios")
 public class Cliente {
 
     @Id
@@ -24,6 +24,9 @@ public class Cliente {
 
     @Column(name = "categorizacion")
     private String categorizacion;
+
+    @Column(name = "pedidos_realizados")
+    private int pedidosRealizados;
 
     @Column(name = "contrasena")
     private String contrasena;

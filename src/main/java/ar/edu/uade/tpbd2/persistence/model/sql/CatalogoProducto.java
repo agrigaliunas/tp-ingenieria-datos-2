@@ -87,4 +87,10 @@ public class CatalogoProducto {
         this.categoria = categoria;
     }
 
+    @Override
+    public String toString() {
+        return "CatalogoProducto [productoId=" + this.productoId + ", nombre=" + this.nombre + ", marca=" + this.marca
+                + ", descripcion=" + this.descripcion + ", precio=" + this.precio + ", stockActual=" + this.stockActual
+                + ", categoria=" + this.categoria + "]";
+    }
 }

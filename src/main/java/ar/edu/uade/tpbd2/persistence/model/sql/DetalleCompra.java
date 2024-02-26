@@ -1,6 +1,5 @@
 package ar.edu.uade.tpbd2.persistence.model.sql;
 
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
@@ -13,18 +12,18 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="Det_facturacion")
-public class DetalleFacturacion {
+@Table(name="Det_compras")
+public class DetalleCompra {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_det_facturacion")
+    @Column(name = "ID_det_compra")
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "ID_facturacion", nullable = false)
+    @JoinColumn(name = "ID_compra", nullable = false)
     @JsonBackReference
-    private Venta facturacion;
+    private Compra compra;
 
     @ManyToOne
     @JoinColumn(name = "productoID")
@@ -35,15 +34,28 @@ public class DetalleFacturacion {
     @Column(name = "Precio_unit")
     private float precioUnitario;
 
-    @Column(name = "forma_pago")
-    private String formaPago;
-
     public Long getId() {
         return this.id;
     }
 
     public void setId(final Long id) {
         this.id = id;
+    }
+
+    public Compra getCompra() {
+        return this.compra;
+    }
+
+    public void setCompra(final Compra compra) {
+        this.compra = compra;
+    }
+
+    public CatalogoProducto getProducto() {
+        return this.producto;
+    }
+
+    public void setProducto(final CatalogoProducto producto) {
+        this.producto = producto;
     }
 
     public int getCantidad() {
@@ -60,30 +72,6 @@ public class DetalleFacturacion {
 
     public void setPrecioUnitario(final float precioUnitario) {
         this.precioUnitario = precioUnitario;
-    }
-
-    public Venta getFacturacion() {
-        return this.facturacion;
-    }
-
-    public void setFacturacion(final Venta facturacion) {
-        this.facturacion = facturacion;
-    }
-
-    public CatalogoProducto getProducto() {
-        return this.producto;
-    }
-
-    public void setProducto(final CatalogoProducto producto) {
-        this.producto = producto;
-    }
-
-    public String getFormaPago() {
-        return this.formaPago;
-    }
-
-    public void setFormaPago(final String formaPago) {
-        this.formaPago = formaPago;
     }
 
 
