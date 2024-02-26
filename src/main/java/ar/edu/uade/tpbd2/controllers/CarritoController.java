@@ -33,7 +33,6 @@ public class CarritoController {
         return this.carritoService.crearCarrito(request);
     }
 
-
     @PostMapping("/agregar/{carritoId}")
     public ResponseEntity<Carrito> agregarProducto(@PathVariable final String carritoId, @RequestBody final Producto producto) {
         try {
