@@ -1,14 +1,11 @@
 package ar.edu.uade.tpbd2.services;
 
-import ar.edu.uade.tpbd2.persistence.model.Actividad;
 import ar.edu.uade.tpbd2.persistence.model.CatalogoDeProducto;
 import ar.edu.uade.tpbd2.repositories.CatalogoDeProductosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 
 @Service
 public class CatalogoDeProductosService {
@@ -45,19 +42,17 @@ public class CatalogoDeProductosService {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(catalogoDeProductoActual);
             }
 
-            System.out.println(catalogoDeProductoActual);
             CatalogoDeProducto catalogoDeProductoAnterior = this.catalogoDeProductosRepository.findByProductoID(productoID).orElse(null);
             System.out.println(catalogoDeProductoAnterior);
             if (catalogoDeProductoAnterior == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(catalogoDeProductoAnterior);
             }
 
-            catalogoDeProductoActual.setActividades(new ArrayList<Actividad>());
-            catalogoDeProductoActual.setActividades(catalogoDeProductoActual.compararCon(catalogoDeProductoAnterior));
-            catalogoDeProductoActual.unirActividades(catalogoDeProductoAnterior);
+            catalogoDeProductoAnterior.ActualizarCatalogoDeProducto(catalogoDeProductoActual);
+            System.out.println(catalogoDeProductoAnterior);
 
             System.out.println("- Actualizar Catalogo nuevo");
-            CatalogoDeProducto nuevoProducto = this.catalogoDeProductosRepository.insert(catalogoDeProductoActual);
+            CatalogoDeProducto nuevoProducto = this.catalogoDeProductosRepository.insert(catalogoDeProductoAnterior);
 
             System.out.println(nuevoProducto);
 

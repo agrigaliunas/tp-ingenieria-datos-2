@@ -12,7 +12,7 @@ public class Actividad {
 
     private LocalDateTime fechaDeActividad;
 
-    public Actividad(String campoActualizado, String valorActual, String valorAnterior) {
+    public Actividad(String campoActualizado, String valorAnterior, String valorActual) {
         this.campoActualizado = campoActualizado;
         this.valorAnterior = valorAnterior;
         this.valorActual = valorActual;

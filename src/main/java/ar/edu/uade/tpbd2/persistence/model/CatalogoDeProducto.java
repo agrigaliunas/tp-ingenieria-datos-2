@@ -2,7 +2,6 @@ package ar.edu.uade.tpbd2.persistence.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -115,36 +114,39 @@ public class CatalogoDeProducto {
                 ", actividades=" + actividades +
                 '}';
     }
-    public List<Actividad> compararCon(CatalogoDeProducto otroProducto) {
-        List<Actividad> diferencias = new ArrayList<>();
-
-        if (this.productoID != null && !this.productoID.equals(otroProducto.getProductoID())) {
-            diferencias.add(new Actividad("productoID", this.productoID, otroProducto.getProductoID()));
-        }
-        if (this.nombre != null && !this.nombre.equals(otroProducto.getNombre())) {
-            diferencias.add(new Actividad("nombre", this.nombre, otroProducto.getNombre()));
-        }
-        if (this.marca != null && !this.marca.equals(otroProducto.getMarca())) {
-            diferencias.add(new Actividad("marca", this.marca, otroProducto.getMarca()));
-        }
-        if (this.descripcion != null && !this.descripcion.equals(otroProducto.getDescripcion())) {
-            diferencias.add(new Actividad("descripcion", this.descripcion, otroProducto.getDescripcion()));
-        }
-        if (this.precio != null && !this.precio.equals(otroProducto.getPrecio())) {
-            diferencias.add(new Actividad("precio", String.valueOf(this.precio), String.valueOf(otroProducto.getPrecio())));
-        }
-        if (this.stockActual != null && !this.stockActual.equals(otroProducto.getStockActual())) {
-            diferencias.add(new Actividad("stockActual", String.valueOf(this.stockActual), String.valueOf(otroProducto.getStockActual())));
-        }
-        if (this.categoria != null && !this.categoria.equals(otroProducto.getCategoria())) {
-            diferencias.add(new Actividad("categoria", this.categoria, otroProducto.getCategoria()));
-        }
-        if (this.ultimaActualizacion != null && !this.ultimaActualizacion.equals(otroProducto.getUltimaActualizacion())) {
-            diferencias.add(new Actividad("ultimaActualizacion", this.ultimaActualizacion.toString(), otroProducto.getUltimaActualizacion().toString()));
+    public void ActualizarCatalogoDeProducto(CatalogoDeProducto actual) {
+        if (this.actividades == null) {
+            this.actividades = new ArrayList<>();
         }
 
-        System.out.println(diferencias);
-        return diferencias;
+        System.out.println("0");
+        if (this.productoID != null && !this.productoID.equals(actual.getProductoID())) {
+            this.actividades.add(new Actividad("productoID", this.productoID, actual.getProductoID()));
+        }
+        System.out.println("1");
+        if (this.nombre != null && !this.nombre.equals(actual.getNombre())) {
+            this.actividades.add(new Actividad("nombre", this.nombre, actual.getNombre()));
+        }
+        System.out.println("3");
+        if (this.marca != null && !this.marca.equals(actual.getMarca())) {
+            this.actividades.add(new Actividad("marca", this.marca, actual.getMarca()));
+        }
+        System.out.println("4");
+        if (this.descripcion != null && !this.descripcion.equals(actual.getDescripcion())) {
+            this.actividades.add(new Actividad("descripcion", this.descripcion, actual.getDescripcion()));
+        }
+        System.out.println("5");
+        if (this.precio != null && !this.precio.equals(actual.getPrecio())) {
+            this.actividades.add(new Actividad("precio", String.valueOf(this.precio), String.valueOf(actual.getPrecio())));
+        }
+        System.out.println("6");
+        if (this.stockActual != null && !this.stockActual.equals(actual.getStockActual())) {
+            this.actividades.add(new Actividad("stockActual", String.valueOf(this.stockActual), String.valueOf(actual.getStockActual())));
+        }
+        System.out.println("7");
+        if (this.categoria != null && !this.categoria.equals(actual.getCategoria())) {
+            this.actividades.add(new Actividad("categoria", this.categoria, actual.getCategoria()));
+        }
     }
 
     public void unirActividades(CatalogoDeProducto otroProducto) {
