@@ -42,6 +42,10 @@ public class CatalogoDeProductosService {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(catalogoDeProductoActual);
             }
 
+            if (!catalogoDeProductoActual.getProductoID().isEmpty()) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(catalogoDeProductoActual);
+            }
+
             CatalogoDeProducto catalogoDeProductoAnterior = this.catalogoDeProductosRepository.findByProductoID(productoID).orElse(null);
             System.out.println(catalogoDeProductoAnterior);
             if (catalogoDeProductoAnterior == null) {
